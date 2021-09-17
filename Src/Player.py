@@ -12,6 +12,8 @@ class Action(Enum):
     PLACE_TRAP_RIGHT = 7
     PLACE_TRAP_UP = 8
     PLACE_TRAP_DOWN = 9
+    INIT = 10
+    NO_ACTION = 11
 
 
 class Player:
@@ -23,6 +25,17 @@ class Player:
         self.trapCount = trapCount
         self.vision = vision
         self.bombDelay = bombDelay
+        self.healthUpgradeCount = 0
+        self.lastAction:Action = None
+
+    def update(self, lastAction, x, y, health, healthUpgradeCount, bombRange, trapCount):
+        self.lastAction = Action(lastAction)
+        self.x = x
+        self.y = y
+        self.health = health
+        self.bombRange = bombRange
+        self.trapCount = trapCount
+        self.healthUpgradeCount = healthUpgradeCount
 
     def go_left(self):          print(0)
     def go_right(self):         print(1)
