@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "D:\project\Python\AICup2021\Src\Agent.py", line 1, in <module>
-    from Map import Map
-  File "D:\project\Python\AICup2021\Src\Map.py", line 1, in <module>
-    from Agent import print_log
-  File "D:\project\Python\AICup2021\Src\Agent.py", line 1, in <module>
-    from Map import Map
-ImportError: cannot import name 'Map' from partially initialized module 'Map' (most likely due to a circular import) (D:\project\Python\AICup2021\Src\Map.py)

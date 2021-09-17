@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "D:\project\Python\AICup2021\Src\Agent.py", line 11, in <module>
+    player = Player(parsed[2], parsed[3], parsed[4], parsed[5], parsed[6], parsed[7], parsed[8])
+TypeError: 'map' object is not subscriptable

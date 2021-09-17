@@ -1,6 +1,6 @@
 from enum import Enum
 from Helpers import print_log
-
+import numpy as np
 
 class TileState(Enum):
     DEADZONE = 0
@@ -18,8 +18,8 @@ class Map:
     def __init__(self, height:int, width:int):
         self.height = height
         self.width = width
-        self.tiles: list[list[str]] = [[None for col in range(width)] for row in range(height)]
-
+        #self.tiles = np.array([[0 for col in range(width)] for row in range(height)])
+        #print(self.tiles)
     def tile_has_state(self, row, col, tile_state:TileState):
         return self.tiles[row][col][tile_state.value] == '1'
 
