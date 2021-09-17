@@ -27,7 +27,7 @@ class Map:
         states :list[TileState] = []
         state_num = self.tiles[row][col]
         index = 0
-        while state_num != 0:
+        while state_num != 0 and index <= 8:
             if state_num % 2 == 1:
                 states.append(TileState(index))
             state_num = state_num >> 1
@@ -39,10 +39,18 @@ class Map:
         while i < 3 * tiles_count:
             row, col, val = tile_info[i:i+3]
             self.tiles[row][col] = val
+            self.tiles[self.height - row -1][self.width - col -1] = val
             i += 3
+            # self.log_tile_states(row, col)
 
     def log_tile_states(self, row:int, col:int):
         log = f'state({row},{col})=> '
         states = self.get_tile_states(row, col)
         log += ', '.join(map(lambda s: s.name, states))
         print_log(log)
+
+    # def log_map(self):
+    #     for row in range(self.height):
+    #         for col in range(self.width):
+    #             if self.tiles[row][col] is not None:
+    #                 log_tile_states(row, col)
