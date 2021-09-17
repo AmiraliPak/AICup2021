@@ -1,5 +1,5 @@
-from Agent import print_log
 from enum import Enum
+from Helpers import print_log
 
 
 class TileState(Enum):
