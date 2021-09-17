@@ -1,4 +1,5 @@
 from enum import Enum
+import random
 
 
 class Action(Enum):
@@ -47,3 +48,5 @@ class Player:
     def place_trap_right(self): print(7)
     def place_trap_up(self):    print(8)
     def place_trap_down(self):  print(9)
+    
+    def random_action(self):    print(int(random.random() * 10))

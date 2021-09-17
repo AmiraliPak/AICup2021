@@ -1,6 +1,5 @@
 from Map import Map
 from Player import Player
-import random
 from Helpers import print_log
 
 
@@ -28,10 +27,10 @@ while True:
         if state_msg_list[8] == 1:
             other_x, other_y, other_health = state_msg_list[9:12]
             numberOfTilesInVision = state_msg_list[12]
-            tileInfo = state_msg_list[12 : ]
+            tileInfo = state_msg_list[13: ]
         else:
             numberOfTilesInVision = state_msg_list[9]
-            tileInfo = state_msg_list[9:]
+            tileInfo = state_msg_list[10:]
 
         game_map.update(numberOfTilesInVision, tileInfo)
         # tiles_info = []
@@ -43,5 +42,4 @@ while True:
     def next_action():
         pass
         
-    print(int(random.random() * 10))
-
+    player.random_action()
