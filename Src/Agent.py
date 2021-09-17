@@ -3,7 +3,6 @@ from Player import Player
 from Helpers import print_log
 
 
-
 # --------------- init -------------- #
 init_msg = input()
 parsed = list(map(int, init_msg.split()[1:]))
@@ -27,7 +26,7 @@ while True:
         if state_msg_list[8] == 1:
             other_x, other_y, other_health = state_msg_list[9:12]
             numberOfTilesInVision = state_msg_list[12]
-            tileInfo = state_msg_list[13: ]
+            tileInfo = state_msg_list[13:]
         else:
             numberOfTilesInVision = state_msg_list[9]
             tileInfo = state_msg_list[10:]
