@@ -41,12 +41,12 @@ PLAYER_2_NAME = os.environ.get("PLAYER_2_NAME", None) or 'Second player'
 
 # --------------- Turn -------------- #
 
-TURN_INIT = os.environ.get("TURN_INIT", None) or 0
+TURN_INIT = int(os.environ.get("TURN_INIT", None) or 0)
 
 
 # --------------- Timeout -------------- #
 
-TIME_OUT = os.environ.get("TIME_OUT", None) or 0.4
+TIME_OUT = float(os.environ.get("TIME_OUT", None) or 0.4)
 TIME_OUT_BEHAVIOUR = os.environ.get("TIME_OUT_BEHAVIOUR", None) or 'kill'
 
 
@@ -62,4 +62,4 @@ PYTHON_EXECUTABLE = os.environ.get("PYTHON_EXECUTABLE", None) or exe or sys.exec
 
 # --------------- Agent startup delay -------------- #
 
-AGENT_STARTUP_DELAY = os.environ.get("AGENT_STARTUP_DELAY", None) or 0
+AGENT_STARTUP_DELAY = float(os.environ.get("AGENT_STARTUP_DELAY", None) or 0)
