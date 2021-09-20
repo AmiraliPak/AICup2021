@@ -50,3 +50,16 @@ class Player:
     def place_trap_down(self):  print(9)
     
     def random_action(self):    print(int(random.random() * 10))
+
+    def get_surrounding_pos(self): return [(self.x-1, self.y), (self.x+1, self.y), (self.x, self.y-1), (self.x, self.y+1)]
+
+    def move_to(self, row, col):
+        '''Moves to an ADJACENT tile'''
+        if row == self.x + 1 and col == self.y:
+            self.go_down()
+        elif row == self.x - 1 and col == self.y:
+            self.go_up()
+        elif row == self.x and col == self.y - 1:
+            self.go_left()
+        elif row == self.x and col == self.y + 1:
+            self.go_right()
