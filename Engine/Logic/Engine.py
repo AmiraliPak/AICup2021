@@ -88,6 +88,16 @@ class Engine():
             return False
         return True
 
+    def isAccessibleForTrap(self, x, y):
+        if (
+            x < 0 or x >= self.map.height or
+            y < 0 or y >= self.map.width or
+            self.map.hasTileState(x, y, Tile_State.wall) or
+            self.map.hasTileState(x, y, Tile_State.box)
+        ):
+            return False
+        return True
+
     def isAccessible(self, x, y):
         if (
             x < 0 or x >= self.map.height or
@@ -198,7 +208,7 @@ class Engine():
             if action.value == Action.place_trap_left.value:
                 trap_y -= 1
 
-            if not self.isAccessibleForPlayer(trap_x, trap_y):
+            if not self.isAccessibleForTrap(trap_x, trap_y):
                 warning(
                     f"Player {self.turn + 1} action in step {self.stepCount} ignored! Tile is not accessible to place a trap ({trap_x}, {trap_y}).")
                 self.lastAction[self.turn] = Action.no_action
@@ -226,11 +236,11 @@ class Engine():
                 f"Player {self.turn + 1} action in step {self.stepCount} is illegal! Action was replaced with 'no_action'.")
             self.lastAction[self.turn] = Action.no_action
 
-    def clearEffects(self):
+    def clearEffects(self, states_to_clear):
         for i in range(self.map.height):
             for j in range(self.map.width):
-                self.map.removeTileState(i, j, Tile_State.box_broken)
-                self.map.removeTileState(i, j, Tile_State.fire)
+                for state in states_to_clear:
+                    self.map.removeTileState(i, j, state)
 
     def saveLogOfGame(self, end=False, winnerId=0):
         players_data = []
@@ -519,7 +529,7 @@ class Engine():
             return winner
 
     def step(self, action: Action):
-        self.clearEffects()
+        self.clearEffects([Tile_State.fire])
         self.clearDeadList()
 
         self.doAction(action)
@@ -527,6 +537,7 @@ class Engine():
         self.collectUpgrades()
 
         self.bombsExplosion()
+        self.clearEffects([Tile_State.box_broken])
 
         self.activateTraps()
 
