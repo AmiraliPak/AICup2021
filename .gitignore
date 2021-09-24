@@ -1,5 +1,6 @@
 # log files
-Engine/*Log
+Engine/agentLog
+Engine/gameLog
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
