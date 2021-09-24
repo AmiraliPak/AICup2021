@@ -53,7 +53,8 @@ class Player:
 
     def get_surrounding_pos(self): return [(self.x-1, self.y), (self.x+1, self.y), (self.x, self.y-1), (self.x, self.y+1)]
 
-    def move_to(self, row, col):
+    def move_to(self, tile):
+        row, col = tile.row, tile.col
         '''Moves to an ADJACENT tile'''
         if row == self.x + 1 and col == self.y:
             self.go_down()
