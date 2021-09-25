@@ -24,34 +24,37 @@ class Player:
         self.health = health
         self.bombRange = bombRange
         self.trapCount = trapCount
-        self.vision = vision
+        # self.vision = vision
         self.bombDelay = bombDelay
         self.healthUpgradeCount = 0
-        self.lastAction:Action = None
+        # self.lastAction:Action = None
+        self.bomb_step_counter = 0
 
-    def update(self, lastAction, x, y, health, healthUpgradeCount, bombRange, trapCount):
-        self.lastAction = Action(lastAction)
+    # def update(self, lastAction, x, y, health, healthUpgradeCount, bombRange, trapCount):
+    def update(self, x, y, health, healthUpgradeCount, bombRange, trapCount):
+        # self.lastAction = Action(lastAction)
         self.x = x
         self.y = y
         self.health = health
         self.bombRange = bombRange
         self.trapCount = trapCount
         self.healthUpgradeCount = healthUpgradeCount
+        if self.bomb_step_counter > 0: self.bomb_step_counter -= 2
 
     def go_left(self):          print(0)
     def go_right(self):         print(1)
     def go_up(self):            print(2)
     def go_down(self):          print(3)
     def stay(self):             print(4)
-    def place_bomb(self):       print(5)
+    def place_bomb(self):
+        print(5)
+        self.bomb_step_counter = self.bombDelay + 2
     def place_trap_left(self):  print(6)
     def place_trap_right(self): print(7)
     def place_trap_up(self):    print(8)
     def place_trap_down(self):  print(9)
     
     def random_action(self):    print(int(random.random() * 10))
-
-    def get_surrounding_pos(self): return [(self.x-1, self.y), (self.x+1, self.y), (self.x, self.y-1), (self.x, self.y+1)]
 
     def move_to(self, tile):
         row, col = tile.row, tile.col
